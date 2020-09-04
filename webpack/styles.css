@@ -1,0 +1,20 @@
+body {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.sample-text {
+  width: 80ch;
+}
+
+rect.interquartile-box {
+  stroke: black;
+  fill: green;
+}
+
+line.median {
+  stroke: black;
+}
+
+line.extent {
+  stroke: black;
+}

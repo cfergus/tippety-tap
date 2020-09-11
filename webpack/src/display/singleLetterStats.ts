@@ -4,33 +4,36 @@ import * as d3 from 'd3';
 const dd3 = d3 as any;
 
 
-export class DoubleLetterStats {
-  
+
+
+
+export class SingleLetterStats {
+
   // The parent container in which to do all DOM modification
   parentElement: d3.Selection<d3.BaseType, unknown, HTMLElement, any>;
   svg: d3.Selection<SVGGElement, unknown, HTMLElement, any>;
   x: any;
   y: any;
-  
+
   constructor(parentElement: d3.Selection<d3.BaseType, unknown, HTMLElement, any>) {
     this.parentElement = parentElement;
     const sizing = new GraphSizing();
-    
+
     this.svg = parentElement
       .append('svg')
       .attr('class', 'double-letter-metrics')
-      .attr('width', sizing.svgWidth )
-      .attr('height', sizing.svgHeight )
+      .attr('width', sizing.svgWidth)
+      .attr('height', sizing.svgHeight)
       .append('g')
       .attr('transform',
         'translate(' + sizing.margin.left + ',' + sizing.margin.top + ')');
     ;
 
-    [this.x, this.y] = initAlphaTimingAxes(this.svg, sizing.width, sizing.height );
+    [this.x, this.y] = initAlphaTimingAxes(this.svg, sizing.width, sizing.height);
   }
 
 
-  render(doubleLetterMetrics:any) {
+  render(doubleLetterMetrics: any) {
 
     // Prepare the data so it's suitable for display, including statistics computation
     const doubleLettersArray = Object.entries<number[]>(doubleLetterMetrics)
@@ -49,10 +52,10 @@ export class DoubleLetterStats {
           deviation: d3.deviation(sortedValues)
         };
       });
-    
+
 
     // // Redraw y axis based on maximum value
-    updateYAxis(this.svg, doubleLettersArray, this.y );
+    updateYAxis(this.svg, doubleLettersArray, this.y);
 
     drawBoxAndWhiskers(this.svg, doubleLettersArray, this.x, this.y);
 

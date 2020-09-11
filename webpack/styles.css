@@ -1,8 +1,9 @@
 body {
-  font-family: 'Courier New', Courier, monospace;
+  /* font-family: 'Courier New', Courier, monospace; */
 }
 
 .sample-text {
+  font-family: 'Courier New', Courier, monospace;
   width: 80ch;
 }
 
@@ -17,4 +18,9 @@ line.median {
 
 line.extent {
   stroke: black;
+}
+
+.metrics-output>div {
+  /* In lieu of a grid system, put them onto one line for now */
+  float: left; 
 }

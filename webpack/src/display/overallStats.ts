@@ -11,6 +11,8 @@ export class OverallStats {
 
   timings: number[] = [];
 
+  numberFormat = d3.format('.1f');
+
   constructor( parentElement: d3.Selection<d3.BaseType,unknown,HTMLElement,any> ) {
 
     this.parentElement = parentElement;
@@ -62,27 +64,17 @@ export class OverallStats {
       .data([stats])
       .join('div')
       .attr('class', 'indicators')
-      // .text('') // TODO : For some reason, it keeps appending divs unless this is here
-      // joining data at wrong level?
       ;
-      // ;
-    statsBox.text('');
+    statsBox.text('');// TODO : For some reason, it keeps appending divs unless this is here
+      // joining data at wrong level?
 
     statsBox.append('div').text( d => `${d.value.length} key pairs`);
-    statsBox.append('div').text( d => `${d.deviation} deviation`);
-
+    statsBox.append('div').text(d => `${this.numberFormat(d.deviation)} deviation`);
 
 
     // Graphs
     drawBoxAndWhiskers( this.svg, [stats], this.x, this.y );
 
     updateYAxis(this.svg, [stats], this.y);
-
-    // this.parentElement
-    //   .select('div')
-    //   .datum(this.timings)
-    //   .enter()
-    //     .append( 'div' )
-    //     .text( d=> `length ${d.length}`)
   }
 }

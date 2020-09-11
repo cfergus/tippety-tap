@@ -34,7 +34,7 @@ export function initAlphaTimingAxes(
     width: number, 
     height: number, 
     xDomain: string[] = alphabet): [d3.ScaleBand<string>,d3.ScaleLinear<number, number>] {
-      
+
   // X scale - key pressed
   const x = d3.scaleBand()
     .domain(xDomain)
@@ -68,6 +68,7 @@ export function drawBoxAndWhiskers(svg: any,
   drawExtentLines(svg, data, x, y);
   drawInterquartile(svg, data, x, y);
   drawMedianLine(svg, data, x, y);
+  // TODO : Should individual points be rendered as well? Or too noisy?
 }
 
 // Draw extent lines
